@@ -1,0 +1,63 @@
+<script>
+import BaseCounter from './components/BaseCounter.vue'
+
+export default {
+  data() {
+    return {
+      message: 'Hey Sumit!',
+      listOfNumbers: [1, 2, 3, 4, 5],
+      items: [
+        {
+          id: '7d4038ca-6900-4ed1-8797-6340170ab9da',
+          name: 'Item 01',
+          list: [1, 2, 3],
+        },
+        {
+          id: '5511dd13-76ca-4b77-b799-ef28a0cf43ec',
+          name: 'Item 02',
+          list: [1, 2, 3],
+        },
+        {
+          id: 'd4c9db69-0263-4898-8b98-417866ed9db8',
+          name: 'Item 03',
+          list: [1, 2, 3],
+        },
+        {
+          id: '1de59615-279a-49f2-9a2b-f6a7f5f79a43',
+          name: 'Item 04',
+          list: [1, 2, 3],
+        },
+        {
+          id: 'b283776e-18fa-45ee-bd2f-bb1b9bf9216a',
+          name: 'Item 05',
+          list: [1, 2, 3],
+        },
+      ],
+    }
+  },
+  components: {
+    BaseCounter,
+  },
+}
+</script>
+
+<template>
+  <BaseCounter />
+  <hr />
+
+  <p v-if="message.length % 2 === 0">Even: {{ message.toUpperCase() }}</p>
+  <p v-else>Odd: {{ message }}</p>
+
+  <h4>Rendering List</h4>
+  <ul>
+    <li v-for="(number, index) in listOfNumbers" v-bind:key="`number-${index}`">{{ number }}</li>
+  </ul>
+
+  <ul v-for="item in items">
+    <li>{{ item.id }}</li>
+
+    <ul>
+      <li v-for="(number, index) in item.list" v-bind:key="`item-${index}`">{{ number }}</li>
+    </ul>
+  </ul>
+</template>
